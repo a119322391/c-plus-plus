@@ -1,0 +1,92 @@
+#include <cstdlib>
+#include <iostream>
+
+using namespace std;
+
+int main(int argc, char *argv[])
+{
+    int a[100];
+    int i = 0;
+
+    double d_num;
+    cin >> d_num;
+    int k_num = (int)d_num;
+    double l_num = d_num - k_num;
+    cout << "二進位表示:" << endl; 
+    
+    int k_num_sol;
+    while(k_num_sol != 0){
+       k_num_sol = k_num / 2;
+       a[i] = k_num % 2;
+       k_num = k_num / 2;
+       i++;                
+    }
+    while(i>0){
+      cout<<a[i-1];
+      i--;
+    }
+    cout<<".";
+    
+    while(l_num != 0.0){
+       l_num = l_num * 2;
+       if(l_num  >= 1){
+         cout << "1";
+         l_num-=1;
+         }
+       else{
+         cout <<  "0";
+         }
+                      
+    }
+    cout << " " << endl;
+    cout << "十六進位表示:" << endl;
+
+     while(k_num_sol != 0){
+       k_num_sol = k_num / 16;
+       a[i] = k_num % 16;
+       k_num = k_num / 16;
+       i++;                
+       
+    }
+    while(i>0){
+      if(a[i] == 10)
+        cout<<"A";
+      else if(a[i] == 11)
+        cout<<"B";
+      else if(a[i] == 12)
+        cout<<"C";
+      else if(a[i] == 13)
+        cout<<"D";
+      else if(a[i] == 14)
+        cout<<"E";
+      else if (a[i] == 15)
+        cout<<"F";
+      else 
+        cout<<a[i-1];
+      i--;
+    }
+    cout<<".";
+    
+    while(l_num != 0.0){
+       l_num = l_num * 16;
+     
+       if(a[i] == 10)
+        cout<<"A";
+      else if(a[i] == 11)
+        cout<<"B";
+      else if(a[i] == 12)
+        cout<<"C";
+      else if(a[i] == 13)
+        cout<<"D";
+      else if(a[i] == 14)
+        cout<<"E";
+      else if (a[i] == 15)
+        cout<<"F";
+        
+      else 
+        cout<<l_num;
+                      
+    }
+    system("PAUSE");
+    return EXIT_SUCCESS;
+}
