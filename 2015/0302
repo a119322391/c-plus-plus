@@ -1,0 +1,21 @@
+#include "stdafx.h"
+#include <iostream>
+using namespace std;
+
+int _tmain(int argc, _TCHAR* argv[])
+{
+	int num = 0;
+	cout << "enter number" << endl;
+	cin >> num;
+	int x = num / 50;
+	int x1 = num % 50;
+	int y = x1 / 10;
+	int y1 = x1 % 10;
+	int z = y1 / 5;
+	int z1 = y1 % 5;
+	int w = z1 / 1;
+	cout << x << " 個50 " << y << " 個10 " << z << " 個5 " << w << " 個1 " << endl;
+	system("pause");
+	return 0;
+}
+
