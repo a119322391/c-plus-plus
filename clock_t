@@ -1,0 +1,64 @@
+#include <cstdlib>
+#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <ctime>
+using namespace std;
+
+int main(int argc, char *argv[])
+{
+    int a[11] = {};
+    int b[10] = {};
+    int j;
+    int k;
+    int count;
+    clock_t start_tick, end_tick;
+    double elapsed;
+    unsigned seed;
+    seed = (unsigned)time(NULL);
+    srand(seed);
+    for(int i=0; i<10; i++){
+        a[i] = rand()%99+1;
+        cout<<" "<< a[i];
+    }
+    cout<<endl;
+    start_tick = clock();
+   for(int h = 0;h<1000000;h++){ 
+    for( j= 1; j<10; j++){
+        int key = a[j];
+            for(k = j; k>0 && key<a[k-1]; k--){
+                   a[k] = a[k-1];       
+            }
+            a[k] = key;
+    }
+   }
+   end_tick = clock();
+   elapsed = (double) (end_tick - start_tick) / CLOCKS_PER_SEC/1000000;
+    cout<<elapsed<<endl;
+    clock_t start_tick1, end_tick1;
+    double elapsed1;
+    start_tick1 = clock();
+  for(int h = 0;h<1000000;h++){  
+    for(j = 0;j<10;j++){
+          count = 0;
+       for(k = 0;k<10;k++){
+          if(a[j]>a[k]){
+            count++;      
+          }
+         
+       }
+           b[count] = a[j];
+    }
+ }   
+    end_tick1 = clock();
+    elapsed1 = (double) (end_tick1 - start_tick1) / CLOCKS_PER_SEC/1000000;
+    cout<<elapsed1<<endl;
+    if(elapsed1>elapsed){
+       cout<<"第一種比較快"<<endl;                     
+    }else{
+       cout<<"第二種比較快"<<endl ;  
+          }
+    system("PAUSE");
+    return EXIT_SUCCESS;
+}
