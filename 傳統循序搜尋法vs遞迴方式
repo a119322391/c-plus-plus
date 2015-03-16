@@ -13,6 +13,7 @@ int _tmain(int argc, _TCHAR* argv[])
 {
 
 	int num[129] = {};
+
 	unsigned seed;
 	seed = (unsigned)time(NULL);
 	srand(seed);
@@ -28,22 +29,30 @@ int _tmain(int argc, _TCHAR* argv[])
 			cout << " ";
 			cout << num[i];
 		}
-		a(num);
 	}
 
-	system("pause");
-	return 0;
-}
-void a(int num[]){
+	cout << " " << endl;
+	int max = num[0];
+	int min = num[0];
 	for (int i = 0; i < 129; i++){
-		int max = num[i];
-		int temp = 0;
-		if (max>num[i + 1]){
-			temp = max;
-			max = num[i + 1];
-			num[i + 1] = max;
+		if (max<num[i]){
+			max = num[i];
 		}
 		
 	}
-	
+	cout << max << endl;
+	cout << " " << endl;
+	for (int i = 0; i < 129; i++){
+		if (min>num[i]){
+			min = num[i];
+		}
+
+	}
+	cout << min << endl;
+	system("pause");
+	return 0;
 }
+
+	
+	
+
