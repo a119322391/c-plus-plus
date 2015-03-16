@@ -1,7 +1,4 @@
-// ConsoleApplication2.cpp : 定義主控台應用程式的進入點。
-//
 
-#include "stdafx.h"
 #include <time.h>
 #include <stdio.h>
 #include <iostream>
@@ -9,11 +6,20 @@
 #include <cstdlib>
 using namespace std;
 void a(int num[]);
-int _tmain(int argc, _TCHAR* argv[])
+void b(int fir,int las,int max,int min);
+int max1 = 0;
+int max2 = 0;
+int min1 = 0; 
+int min2 = 0;
+int max = 0;
+int min = 0;
+int fir = 0;
+int las = 129;
+int num[129] = {};
+int main(int argc, char *argv[])
 {
 
-	int num[129] = {};
-
+	
 	unsigned seed;
 	seed = (unsigned)time(NULL);
 	srand(seed);
@@ -32,7 +38,14 @@ int _tmain(int argc, _TCHAR* argv[])
 	}
 
 	cout << " " << endl;
-	int max = num[0];
+	a(num);
+	b(0,129,0,0);
+	system("pause");
+	return 0;
+}
+
+void a(int num[]){
+     int max = num[0];
 	int min = num[0];
 	for (int i = 0; i < 129; i++){
 		if (max<num[i]){
@@ -49,10 +62,32 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	}
 	cout << min << endl;
-	system("pause");
-	return 0;
+    }
+void b(int fir,int las,int max,int min){
+     if(fir == las){
+          max = num[fir];
+          min = num[fir];
+     if(max2>max1){
+             max = max2;
+          }
+          else{
+             max = max1;     
+          }
+          cout<<max;
+          cout<<""<<endl;
+          if(min2<min1){
+             min = min2;
+          }
+          else{
+             min = min1;     
+          }   
+          cout<<min;
+     }
+     else{
+         
+          b(fir,(las-fir)/2,max1,min1);
+          b((las-fir/2)+1,las,max2,min2);
+           
+     }
 }
-
-	
-	
 
