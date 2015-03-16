@@ -1,0 +1,49 @@
+// ConsoleApplication2.cpp : 定義主控台應用程式的進入點。
+//
+
+#include "stdafx.h"
+#include <time.h>
+#include <stdio.h>
+#include <iostream>
+#include <stdlib.h>
+#include <cstdlib>
+using namespace std;
+void a(int num[]);
+int _tmain(int argc, _TCHAR* argv[])
+{
+
+	int num[129] = {};
+	unsigned seed;
+	seed = (unsigned)time(NULL);
+	srand(seed);
+	for (int i = 0; i < 129; i++){
+		num[i] = rand() % 128 + 1;
+	
+	}
+	for (int i = 0; i < 129; i++){
+		if (i % 10 == 0){
+			cout <<""<< endl;
+		}
+		else{
+			cout << " ";
+			cout << num[i];
+		}
+		a(num);
+	}
+
+	system("pause");
+	return 0;
+}
+void a(int num[]){
+	for (int i = 0; i < 129; i++){
+		int max = num[i];
+		int temp = 0;
+		if (max>num[i + 1]){
+			temp = max;
+			max = num[i + 1];
+			num[i + 1] = max;
+		}
+		
+	}
+	
+}
